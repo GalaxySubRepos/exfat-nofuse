@@ -1,0 +1,16 @@
+Source: exfat-nofuse
+Section: kernel
+Priority: extra
+Maintainer: Zhong Jianxin <azuwis@gmail.com>
+Build-Depends: debhelper (>=9), dkms
+Standards-Version: 3.9.4
+Homepage: https://github.com/dorimanx/exfat-nofuse
+#Vcs-Git: git://anonscm.debian.org/collab-maint/exfat.git
+#Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/exfat.git
+
+Package: exfat-nofuse-dkms
+Architecture: all
+Depends: ${misc:Depends}, dkms
+Description: Read/write kernel driver for exFat and VFat file systems
+ Linux non-fuse read/write kernel driver for the exFAT, FAT12, FAT16 and vfat
+ (FAT32) file systems. Originally ported from android kernel v3.0.

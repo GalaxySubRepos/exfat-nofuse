@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+SRC_PKG_NAME  := $(shell dpkg-parsechangelog | grep Source: | cut -d" " -f2)
+UPSTREAM_VER  := $(shell dpkg-parsechangelog | grep Version: | cut -d" " -f2 | cut -d"-" -f1)
+
+BIN_PKG_NAME  := $(SRC_PKG_NAME)-dkms
+DKMS_PKG_NAME := $(SRC_PKG_NAME)
+DKMS_PKG_VER  := $(UPSTREAM_VER)
+
+%:
+	dh $@ --with dkms
+
+override_dh_auto_clean:
+	rm -f debian/$(BIN_PKG_NAME).install
+	rm -f debian/$(BIN_PKG_NAME).dkms
+
+override_dh_auto_build:
+	sed -e 's/@DKMS_PKG_NAME@/'$(DKMS_PKG_NAME)/g \
+            -e 's/@DKMS_PKG_VER@/'$(DKMS_PKG_VER)/g \
+            debian/$(BIN_PKG_NAME).install.in > debian/$(BIN_PKG_NAME).install
+	sed -e 's/@DKMS_PKG_NAME@/'$(DKMS_PKG_NAME)/g \
+            -e 's/@DKMS_PKG_VER@/'$(DKMS_PKG_VER)/g \
+            debian/$(BIN_PKG_NAME).dkms.in > debian/$(BIN_PKG_NAME).dkms
+
+override_dh_auto_install:

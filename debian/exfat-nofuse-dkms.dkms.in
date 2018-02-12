@@ -1,0 +1,7 @@
+PACKAGE_NAME="@DKMS_PKG_NAME@"
+PACKAGE_VERSION="@DKMS_PKG_VER@"
+CLEAN="CONFIG_EXFAT_FS=m make -C ${kernel_source_dir} M=${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build clean"
+MAKE="CONFIG_EXFAT_FS=m make -C ${kernel_source_dir} M=${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build modules"
+BUILT_MODULE_NAME="exfat"
+DEST_MODULE_LOCATION="/updates/dkms"
+AUTOINSTALL="yes"

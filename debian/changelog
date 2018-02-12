@@ -1,0 +1,12 @@
+exfat-nofuse (1.2.8-1) unstable; urgency=low
+
+  * UNRELEASED
+
+ -- Zhong Jianxin <azuwis@gmail.com>  Tue, 13 May 2014 09:11:07 +0800
+
+exfat-nofuse (1.2.7-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Zhong Jianxin <azuwis@gmail.com>  Mon, 30 Dec 2013 11:25:54 +0800
+
